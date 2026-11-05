@@ -1,12 +1,52 @@
 ﻿<Window x:Class="GtnApi.Desktop.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GtnApi.Desktop"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="GTN-API - Gestor de Tareas" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen" Background="#F3F4F6">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
+        <!-- Panel de Proyectos -->
+        <Border Grid.Column="0" Background="#1F2937" Padding="10">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Top" Text="Proyectos" Foreground="White" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+                <Button DockPanel.Dock="Bottom" Content="+ Nuevo Proyecto" Margin="0,10,0,0" Padding="5" Background="#10B981" Foreground="White" BorderThickness="0" Click="BtnNuevoProyecto_Click"/>
+                <ListBox x:Name="LstProyectos" Background="Transparent" BorderThickness="0" Foreground="White" DisplayMemberPath="Name" SelectionChanged="LstProyectos_SelectionChanged" />
+            </DockPanel>
+        </Border>
+
+        <!-- Panel de Tareas y Notas -->
+        <Grid Grid.Column="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="TxtTituloProyecto" Text="Selecciona un proyecto" FontSize="24" FontWeight="Bold" Foreground="#111827" Margin="0,0,0,20" />
+
+            <TabControl Grid.Row="1" Background="White" BorderThickness="1" BorderBrush="#E5E7EB">
+                <TabItem Header="Tareas">
+                    <DockPanel Margin="10">
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,10,0,0">
+                            <TextBox x:Name="TxtNuevaTarea" Width="300" Padding="5" Margin="0,0,10,0" />
+                            <Button Content="Agregar Tarea" Padding="10,5" Background="#3B82F6" Foreground="White" BorderThickness="0" Click="BtnNuevaTarea_Click"/>
+                        </StackPanel>
+                        <ListBox x:Name="LstTareas" DisplayMemberPath="Title" />
+                    </DockPanel>
+                </TabItem>
+                <TabItem Header="Notas">
+                    <DockPanel Margin="10">
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,10,0,0">
+                            <TextBox x:Name="TxtNuevaNota" Width="300" Padding="5" Margin="0,0,10,0" />
+                            <Button Content="Agregar Nota" Padding="10,5" Background="#8B5CF6" Foreground="White" BorderThickness="0" Click="BtnNuevaNota_Click"/>
+                        </StackPanel>
+                        <ListBox x:Name="LstNotas" DisplayMemberPath="Title" />
+                    </DockPanel>
+                </TabItem>
+            </TabControl>
+        </Grid>
     </Grid>
 </Window>
