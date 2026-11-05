@@ -1,0 +1,55 @@
+﻿## Build output
+[Bb]in/
+[Oo]bj/
+[Pp]ublish/
+[Oo]ut/
+artifacts/
+
+## IDEs
+.vs/
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+## Tests / coverage
+TestResults/
+*.trx
+coverage*.json
+coverage*.xml
+*.coverage
+*.coveragexml
+
+## NuGet
+*.nupkg
+*.snupkg
+.nuget/
+project.lock.json
+
+## Bases de datos SQLite locales (datos del usuario)
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+## Logs
+*.log
+logs/
+
+## Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+## Secretos / config local
+appsettings.Local.json
+*.pfx
+.env
