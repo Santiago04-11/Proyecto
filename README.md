@@ -1,13 +1,13 @@
-﻿# GTN-API
+﻿# GTN-API 📝
 
 Gestor de Tareas y Notas **100% offline** para Windows, con una **API HTTP local** para integrarlo con otros programas (scripts, herramientas de línea de comandos, etc.).
 
-> Estado: en desarrollo (M0: setup inicial)
+> Estado: **Completado (M5)** — Aplicación funcional y empaquetada.
 
-## Características previstas
+## Características
 
 - CRUD de **Notas**, **Tareas** y **Proyectos** desde una interfaz WPF.
-- API REST local (JSON) disponible únicamente en `127.0.0.1`.
+- API REST local (JSON) disponible únicamente en `127.0.0.1` (Puerto `5199`).
 - Persistencia local con SQLite.
 - Sin telemetría, sin auto-update, sin llamadas a internet en runtime.
 
@@ -21,44 +21,16 @@ Gestor de Tareas y Notas **100% offline** para Windows, con una **API HTTP local
 | Persistencia | SQLite + EF Core         |
 | Tests        | xUnit                    |
 
-## Estructura
+## Estructura del Proyecto
 
-@'
-# GTN-API
-
-Gestor de Tareas y Notas **100% offline** para Windows, con una **API HTTP local** para integrarlo con otros programas (scripts, herramientas de línea de comandos, etc.).
-
-> Estado: en desarrollo (M0: setup inicial)
-
-## Características previstas
-
-- CRUD de **Notas**, **Tareas** y **Proyectos** desde una interfaz WPF.
-- API REST local (JSON) disponible únicamente en `127.0.0.1`.
-- Persistencia local con SQLite.
-- Sin telemetría, sin auto-update, sin llamadas a internet en runtime.
-
-## Stack
-
-| Capa         | Tecnología               |
-|--------------|--------------------------|
-| Lenguaje     | C# / .NET 8              |
-| GUI          | WPF                      |
-| API local    | ASP.NET Core Minimal API |
-| Persistencia | SQLite + EF Core         |
-| Tests        | xUnit                    |
-
-## Estructura
-
-Proyecto/
-├─ docs/ # SRS y documentación de la API
-├─ src/
-│ ├─ GtnApi.Core/ # modelos, DbContext, repositorios
-│ ├─ GtnApi.Api/ # Minimal API
-│ └─ GtnApi.Desktop/ # WPF
-├─ tests/
-│ └─ GtnApi.Tests/ # xUnit
-└─ scripts/ # publish.ps1
-
+- `docs/` -> SRS y documentación de la API
+- `src/`
+  - `GtnApi.Core/` -> Modelos, DbContext, repositorios
+  - `GtnApi.Api/` -> Minimal API
+  - `GtnApi.Desktop/` -> Interfaz WPF
+- `tests/`
+  - `GtnApi.Tests/` -> Pruebas unitarias
+- `scripts/` -> publish.ps1
 
 ## Requisitos de desarrollo
 
@@ -68,25 +40,39 @@ Proyecto/
 
 ## Compilar y probar
 
-```powershell
+Ejecuta los siguientes comandos en la raíz del proyecto:
+
 dotnet restore
 dotnet build
 dotnet test
-```
 
-## Documentación
+## 🚀 Generar el ejecutable final (.exe)
+
+Para crear un archivo ejecutable autocontenido (que no requiere tener .NET instalado en la máquina destino):
+
+.\scripts\publish.ps1
+
+El ejecutable quedará en la carpeta `publish/`.
+
+## 🌐 Documentación de la API
+
+La API cuenta con Swagger para pruebas interactivas. Para encenderla:
+
+dotnet run --project src/GtnApi.Api
+
+Luego abre en tu navegador: `http://127.0.0.1:5199/swagger`
 
 - [SRS (IEEE 830)](docs/SRS.md)
-- [API](docs/API.md) (pendiente)
+- [API](docs/API.md)
 
 ## Roadmap
 
 - [x] M0: Setup
-- [ ] M1: Núcleo de datos
-- [ ] M2: API local
-- [ ] M3: GUI WPF
-- [ ] M4: Empaquetado
-- [ ] M5: Documentación
+- [x] M1: Núcleo de datos
+- [x] M2: API local
+- [x] M3: GUI WPF
+- [x] M4: Empaquetado
+- [x] M5: Documentación
 
 ## Licencia
 
